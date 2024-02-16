@@ -1,0 +1,38 @@
+html {
+    font-size: 1rem;
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.game-baord {
+    border: 2px #339999 solid;
+    height: 2425px;
+    width: 1475px;
+    padding: 10px;
+}
+
+    .game-baord.forbidden {
+        pointer-events: none;
+        cursor: wait;
+        opacity: 0.65;
+    }
+
+    .game-baord .box {
+        border: 1px #55bbbb solid;
+        border-radius: 1px;
+        height: 10px;
+        width: 10px;
+        display: inline-block;
+    }
+
+        .game-baord .box.open {
+            background-color: #99ffff;
+        }
+
+        .game-baord .box.close {
+            background-color: #de96a6;
+        }

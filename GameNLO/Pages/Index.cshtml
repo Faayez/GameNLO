@@ -1,0 +1,42 @@
+﻿@page
+
+@model IndexModel
+
+@{
+    ViewData["Title"] = "let's play";
+}
+
+<p>
+    @Html.DisplayFor(p => p.Message)
+</p>
+
+<div class="game-baord @(Model.IsUserEligible ? "": "forbidden")">
+    @for (var x = 0; x < 100; x++)
+    {
+        @for (var y = 0; y < 100; y++)
+        {
+            <span class="box @(Model.Map[x, y].IsShown ? "open": "close")" onclick="openBox(@x, @y)"></span>
+        }
+
+        <br />
+    }
+
+    <form method="post" id="pageForm">
+        <input type="hidden" asp-for="SelectedNodeLatitude" />
+        <input type="hidden" asp-for="SelectedNodeLongitude" />
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        function openBox(x, y) {
+            let latitude = document.getElementById('SelectedNodeLatitude');
+            latitude.setAttribute('value', x);
+
+            let longitude = document.getElementById('SelectedNodeLongitude');
+            longitude.setAttribute('value', y);
+
+            document.getElementById("pageForm").submit();
+        }
+    </script>
+}
