@@ -5,6 +5,7 @@ namespace GameNLO.Services
     {
         bool IsUserEligible(Guid userId);
 
-        decimal? OpenBox(UserModel userModel, int x, int y);
+        decimal? OpenBox(Guid userId, int x, int y);
     }
+
 }

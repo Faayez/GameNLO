@@ -1,13 +1,28 @@
 {
   "version": "1.0",
-  "defaultProvider": "cdnjs",
+  "defaultProvider": "unpkg",
   "libraries": [
     {
       "library": "bootstrap@5.3.2",
       "destination": "wwwroot/lib/bootstrap/",
       "files": [
-        "js/bootstrap.min.js",
-        "css/bootstrap.min.css"
+        "dist/css/bootstrap.min.css",
+        "dist/js/bootstrap.min.js"
+      ]
+    },
+    {
+      "library": "@microsoft/signalr@6.0.6",
+      "destination": "wwwroot/lib/signalr/",
+      "files": [
+        "dist/browser/signalr.min.js"
+      ]
+    },
+    {
+      "library": "sweetalert2@11.10.5",
+      "destination": "wwwroot/lib/sweetalert2/",
+      "files": [
+        "dist/sweetalert2.min.css",
+        "dist/sweetalert2.min.js"
       ]
     }
   ]

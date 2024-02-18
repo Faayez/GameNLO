@@ -6,37 +6,31 @@
     ViewData["Title"] = "let's play";
 }
 
-<p>
-    @Html.DisplayFor(p => p.Message)
-</p>
+<div class="timer d-flex align-items-center justify-content-center mb-3 mt-3">
+    <span class="label">Remaining Time:</span> <span class="time"><span data-minutes class="minutes"></span>:<span data-seconds class="seconds"></span></span>
+</div>
 
-<div class="game-baord @(Model.IsUserEligible ? "": "forbidden")">
+<div class="game-baord" id="game-baord">
     @for (var x = 0; x < 100; x++)
     {
         @for (var y = 0; y < 100; y++)
         {
-            <span class="box @(Model.Map[x, y].IsShown ? "open": "close")" onclick="openBox(@x, @y)"></span>
+            <span class="box @(Model.Map[x, y].IsShown ? "open": "close")" onclick="requestBox(@x, @y)" id="@(x)_@(y)"></span>
         }
 
         <br />
     }
-
-    <form method="post" id="pageForm">
-        <input type="hidden" asp-for="SelectedNodeLatitude" />
-        <input type="hidden" asp-for="SelectedNodeLongitude" />
-    </form>
 </div>
 
 @section Scripts {
+    <script src="~/lib/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/gameStatus.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/timezz@7.0.0/dist/timezz.min.js"></script>
     <script>
-        function openBox(x, y) {
-            let latitude = document.getElementById('SelectedNodeLatitude');
-            latitude.setAttribute('value', x);
-
-            let longitude = document.getElementById('SelectedNodeLongitude');
-            longitude.setAttribute('value', y);
-
-            document.getElementById("pageForm").submit();
-        }
+        timezz(document.querySelector('.timer'), {
+            date: '@Model.EndDateTime',
+            stopOnZero: true,
+        });
     </script>
 }

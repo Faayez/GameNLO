@@ -5,6 +5,7 @@
         public BoxModel[,] Map { get; set; }
 
         public HashSet<UserModel> Users { get; set; }
+        public DateTime EndTime { get; set; }
 
         public GameModel()
         {
