@@ -7,8 +7,7 @@ connection.on("UpdateStatus", function (status, latitude, longitude) {
         position: "top-end",
         icon: "success",
         title: status,
-        showConfirmButton: false,
-        timer: 1500
+        showConfirmButton: true
     });
 
     openBox(latitude, longitude);
@@ -19,8 +18,7 @@ connection.on("SendMessage", function (message, icon) {
         position: "top-end",
         icon: icon,
         title: message,
-        showConfirmButton: false,
-        timer: 1500
+        showConfirmButton: true
     });
 });
 
@@ -32,8 +30,7 @@ connection.on("ValidateUser", function (isUserEligible, message) {
             position: "top-end",
             icon: "warning",
             title: message,
-            showConfirmButton: false,
-            timer: 1500
+            showConfirmButton: true
         });
     }
 });
@@ -47,13 +44,15 @@ connection.start().then(function () {
 function requestBox(latitude, longitude) {
 
     try {
-        connection.invoke("SendCommand", latitude, longitude);
-        openBox(latitude, longitude);
+        connection.invoke("SendCommand", latitude, longitude)
+            .then(function () {
+                openBox(latitude, longitude)
+            })
     } catch (error) {
         return console.error(error.toString());
     }
     finally {
-        validateUser(false);
+        //validateUser(false);
     }
 }
 

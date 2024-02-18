@@ -1,5 +1,4 @@
-﻿using GameNLO.Models;
-namespace GameNLO.Services
+﻿namespace GameNLO.Services
 {
     public interface IGameService
     {

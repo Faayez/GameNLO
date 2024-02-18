@@ -1,6 +1,6 @@
 ﻿namespace GameNLO.Services.GameEngines
 {
-    public class MaxPrizeStrategy: IPrizeGenerationStrategy
+    public class MaxPrizeStrategy : IPrizeGenerationStrategy
     {
         public int GeneratePrize(Random prizeRand)
         {
